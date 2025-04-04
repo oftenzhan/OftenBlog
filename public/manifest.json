@@ -1,6 +1,6 @@
 {
-  "name": "Netlify + Hugo Quickstart",
-  "short_name": "Netlify + Hugo Quickstart",
+  "name": "Hugo Book",
+  "short_name": "Hugo Book",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
