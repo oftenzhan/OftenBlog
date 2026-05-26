@@ -1,0 +1,110 @@
+
+body 
+    {
+    
+    /* basic font family */
+        font-family:
+            "Courier New",
+            ui-monospace,
+            SFMono-Regular,
+            Menlo,
+            Monaco,
+            Consolas,
+            "Liberation Mono",
+            monospace;
+
+        /* Wide text is harder to read. */
+        max-width: 760px;
+    
+        /* Centers page horizontally. */
+        margin: 40px auto;
+
+        /* Cleaner mobile.*/
+        padding: 0 20px;
+
+        /* Comfortable line spacing. */
+        line-height: 1.6;
+
+        /* Slightly softer than pure black. */
+        color: #222;
+
+        /* Pure white background. */
+        background: #fff;
+    }
+
+/* Headings */
+
+h1, h2, h3 
+    {
+        line-height: 1.2;
+        margin-top: 2rem;
+    }
+
+h1 
+    {
+        font-size: 2.2rem;
+    }
+
+h2 
+    {
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 0.3rem;
+    }
+
+/* Links */
+
+a 
+    {
+        color: #0645ad;
+    }
+
+a:hover 
+    {
+        text-decoration: none;
+    }
+
+/* Images */
+img {
+        max-width: 100%; 
+        height: auto;
+    
+        /* Slight spacing around images. */
+        margin: 1rem 0;
+    }
+
+/* Code blocks */
+code, pre 
+    {
+        background: #f4f4f4;
+        padding: 2px 4px;
+        font-family: monospace;
+    }
+
+pre 
+    {
+        padding: 1rem;
+        overflow-x: auto;}
+
+/* Blockquotes */
+blockquote 
+    {
+        border-left: 4px solid #ccc;
+        margin-left: 0;
+        padding-left: 1rem;
+        color: #555;
+    }
+
+/* Horizontal rule */
+hr 
+    {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 3rem 0;
+    }
+
+/* Small helper class for subtle text */
+.note 
+    {
+        color: #666;
+        font-size: 0.95rem;
+    }
