@@ -1,142 +1,149 @@
 <!doctype html>
 <html lang="en">
     <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Often Thinks Blog</title>
-
-<link rel="stylesheet" href="../style.css">
-</head>
-
-<body>
-        <article>
-            <h3>GitHub Pages Blog</h3>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Often Thinks Blog</title>
+        <link rel="stylesheet" href="../style.css" />
+    </head>
+    <body>
+        <h1>Often Thinks</h1>
+        <header>
             <p class="note">Last updated: 2026.05.26</p>
 
             <p>
-                This is a reference sheet for (1) setting up a blog on GitHub Pages from scratch using Linux and (2)
-                editing a HTML/CSS website across multiple devices using Git and the terminal.
+                <a href="../index.html">Return Home</a>
             </p>
+        </header>
+        <main>
+            <article>
+                <h3>GitHub Pages Blog</h3>
+                <p class="note">Last updated: 2026.05.26</p>
 
-            <h3>Part 1. SSH Setup (Authentication)</h3>
+                <p>
+                    This is a reference sheet for (1) setting up a blog on GitHub Pages from scratch using Linux and (2)
+                    editing a HTML/CSS website across multiple devices using Git and the terminal.
+                </p>
 
-            <p>
-                GitHub does not allow username/password authentication for Git operations anymore. Instead, it uses
-                either (1) personal access tokens or (2) SSH keys. This tutorial uses SSH.
-            </p>
+                <h3>Part 1. SSH Setup (Authentication)</h3>
 
-            <h4>Step 1.1. Generate SSH key</h4>
+                <p>
+                    GitHub does not allow username/password authentication for Git operations anymore. Instead, it uses
+                    either (1) personal access tokens or (2) SSH keys. This tutorial uses SSH.
+                </p>
 
-            <pre><code>ssh-keygen -t ed25519 -C "your_email@example.com"</code></pre>
+                <h4>Step 1.1. Generate SSH key</h4>
 
-            <p>Press Enter for default options unless you want to customize the file location.</p>
+                <pre><code>ssh-keygen -t ed25519 -C "your_email@example.com"</code></pre>
 
-            <h4>Step 1.2. Start SSH agent</h4>
+                <p>Press Enter for default options unless you want to customize the file location.</p>
 
-            <pre><code>eval "$(ssh-agent -s)"</code></pre>
-            <pre><code>ssh-add ~/.ssh/id_ed25519</code></pre>
+                <h4>Step 1.2. Start SSH agent</h4>
 
-            <p>This starts the SSH agent and loads your private key so Git can use it automatically.</p>
+                <pre><code>eval "$(ssh-agent -s)"</code></pre>
+                <pre><code>ssh-add ~/.ssh/id_ed25519</code></pre>
 
-            <h4>Step 1.3. Add SSH key to GitHub</h4>
+                <p>This starts the SSH agent and loads your private key so Git can use it automatically.</p>
 
-            <p>Copy your public key:</p>
+                <h4>Step 1.3. Add SSH key to GitHub</h4>
 
-            <pre><code>cat ~/.ssh/id_ed25519.pub</code></pre>
+                <p>Copy your public key:</p>
 
-            <p>Then go to:</p>
+                <pre><code>cat ~/.ssh/id_ed25519.pub</code></pre>
 
-            <pre><code>GitHub → Settings → SSH and GPG keys → New SSH key</code></pre>
+                <p>Then go to:</p>
 
-            <p>Paste the key and save.</p>
+                <pre><code>GitHub → Settings → SSH and GPG keys → New SSH key</code></pre>
 
-            <h4>Step 1.4. Test connection</h4>
+                <p>Paste the key and save.</p>
 
-            <pre><code>ssh -T git@github.com</code></pre>
+                <h4>Step 1.4. Test connection</h4>
 
-            <p>If successful, you will see:</p>
+                <pre><code>ssh -T git@github.com</code></pre>
 
-            <pre><code>Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.</code></pre>
+                <p>If successful, you will see:</p>
 
-            <p>
-                This is expected. It only confirms authentication, and also a reminder that GitHub is not a shell
-                server.
-            </p>
+                <pre><code>Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.</code></pre>
 
-            <h3>Part 2. GitHub Repository and Pages Setup</h3>
+                <p>
+                    This is expected. It only confirms authentication, and also a reminder that GitHub is not a shell
+                    server.
+                </p>
 
-            <h4>Step 2.1. Create a new repository</h4>
+                <h3>Part 2. GitHub Repository and Pages Setup</h3>
 
-            <p>Go to GitHub and create a new repository:</p>
+                <h4>Step 2.1. Create a new repository</h4>
 
-            <ul>
-                <li>Name: anything (e.g. my-website)</li>
-                <li>Visibility: Public (required for GitHub Pages)</li>
-                <li>Do NOT initialize with README (optional but cleaner for terminal workflow)</li>
-            </ul>
+                <p>Go to GitHub and create a new repository:</p>
 
-            <h4>Step 2.2. Connect local project to GitHub</h4>
-            <p>Go to your website folder.</p>
-            <pre><code>cd /path/to/your/website</code></pre>
-            <p>Once you are in your website's folder, initialize git and connect it to your repository.</p>
-            <pre><code>git init</code></pre>
-            <pre><code>git remote add origin git@github.com:USERNAME/REPO.git</code></pre>
-            <pre><code>git branch -M main</code></pre>
+                <ul>
+                    <li>Name: anything (e.g. my-website)</li>
+                    <li>Visibility: Public (required for GitHub Pages)</li>
+                    <li>Do NOT initialize with README (optional but cleaner for terminal workflow)</li>
+                </ul>
 
-            <h4>Step 2.3. Upload your website</h4>
+                <h4>Step 2.2. Connect local project to GitHub</h4>
+                <p>Go to your website folder.</p>
+                <pre><code>cd /path/to/your/website</code></pre>
+                <p>Once you are in your website's folder, initialize git and connect it to your repository.</p>
+                <pre><code>git init</code></pre>
+                <pre><code>git remote add origin git@github.com:USERNAME/REPO.git</code></pre>
+                <pre><code>git branch -M main</code></pre>
 
-            <pre><code>git add .</code></pre>
-            <pre><code>git commit -m "Initial website upload"</code></pre>
-            <pre><code>git push -u origin main</code></pre>
+                <h4>Step 2.3. Upload your website</h4>
 
-            <p>At this point, your code is stored on GitHub.</p>
+                <pre><code>git add .</code></pre>
+                <pre><code>git commit -m "Initial website upload"</code></pre>
+                <pre><code>git push -u origin main</code></pre>
 
-            <h4>Step 2.4. Enable Pages</h4>
+                <p>At this point, your code is stored on GitHub.</p>
 
-            <p>Go to your repository:</p>
+                <h4>Step 2.4. Enable Pages</h4>
 
-            <pre><code>Settings → Pages</code></pre>
+                <p>Go to your repository:</p>
 
-            <p>Then set:</p>
+                <pre><code>Settings → Pages</code></pre>
 
-            <ul>
-                <li>Source: Deploy from branch</li>
-                <li>Branch: main</li>
-                <li>Folder: / (root)</li>
-            </ul>
+                <p>Then set:</p>
 
-            <p>Save the settings.</p>
+                <ul>
+                    <li>Source: Deploy from branch</li>
+                    <li>Branch: main</li>
+                    <li>Folder: / (root)</li>
+                </ul>
 
-            <h4>Step 2.5. Access your website</h4>
+                <p>Save the settings.</p>
 
-            <p>Your site will be live at:</p>
+                <h4>Step 2.5. Access your website</h4>
 
-            <pre><code>https://USERNAME.github.io/REPO/</code></pre>
+                <p>Your site will be live at:</p>
 
-            <h3>Part 3. Website Editing Workflow</h3>
+                <pre><code>https://USERNAME.github.io/REPO/</code></pre>
 
-            <p>
-                Always sync the website folder before making any edits to the website. This is especially true if you
-                edit the website through multiple devices.
-            </p>
+                <h3>Part 3. Website Editing Workflow</h3>
 
-            <h4>Step 3.1. Sync latest version</h4>
+                <p>
+                    Always sync the website folder before making any edits to the website. This is especially true if
+                    you edit the website through multiple devices.
+                </p>
 
-            <pre><code>git pull</code></pre>
+                <h4>Step 3.1. Sync latest version</h4>
 
-            <h4>Step 3.2. Make edits</h4>
+                <pre><code>git pull</code></pre>
 
-            <p>Edit HTML, CSS, images, etc.</p>
+                <h4>Step 3.2. Make edits</h4>
 
-            <h4>Step 3.3. Save and publish changes</h4>
+                <p>Edit HTML, CSS, images, etc.</p>
 
-            <pre><code>git add .</code></pre>
-            <pre><code>git commit -m "Describe update"</code></pre>
-            <pre><code>git push</code></pre>
-        </article>
-        <article>
-        <h2>Parent-Teacher Conference and Cumulative File</h2>
-        <pre><code>
+                <h4>Step 3.3. Save and publish changes</h4>
+
+                <pre><code>git add .</code></pre>
+                <pre><code>git commit -m "Describe update"</code></pre>
+                <pre><code>git push</code></pre>
+            </article>
+            <article>
+                <h2>Parent-Teacher Conference and Cumulative File</h2>
+                <pre><code>
 ## Student Information
 Student Name: __________________
 Date: __________________________
@@ -209,56 +216,57 @@ His/her classroom behavior is...
 - prioritizing tasks  
 - goal setting and planning  
 </code></pre>
-</article>
-        <article><h2>Student Supply List</h2>
-<dl>
-    <dt>1</dt>
-        <dd>King James Bible</dd>
-    <dt>10+</dt>
-        <dd>#2 Pencils</dd>
-    <dt>1</dt>
-        <dd>zippered fabric pencil pouch</dd>
-    <dt>2</dt>
-        <dd>eraser sticks</dd>
-    <dt>2</dt>
-        <dd>glue sticks</dd>
-    <dt>1</dt>
-        <dd>scissors (sharp-pointed)</dd>
-    <dt>1</dt>
-        <dd>scissors (dull-pointed)</dd>
-    <dt>1</dt>
-        <dd>12" ruler</dd>
-    <dt>1</dt>
-        <dd>pencil sharpener with shavings holder</dd>
-    <dt>2</dt>
-        <dd>Sewn-bound Composition Notebook (College Ruled)</dd>
-    <dt>1</dt>
-        <dd>Reusable Metal or Plastic Water Bottle</dd>
-        <dd>(Glass is not allowed.)</dd>
-    <dt>1</dt>
-        <dd>Lunchbox and Utensils</dd>
-    <dt>1</dt>
-        <dd>multi-color pen (black, red, blue, green)</dd>
-    <dt>1</dt>
-        <dd>300 white (lined) 3x5 index cards</dd>
-    <dt>1</dt>
-        <dd>plastic index card box</dd>
-    <dt>1</dt>
-        <dd>sturdy horizontal pocket folder</dd>
-</dl>
-    
-<h2>Classroom Supply List</h2>
-<dl>
-    <dt>3</dt>
-        <dd>tissue boxes</dd>
-    <dt>3+</dt>
-        <dd>baby wipes</dd>
-    <dt>3+</dt>
-        <dd>pack of wide-ruled loose-leaf paper</dd>
-   <dt>1</dt>
-        <dd>ream of white copy paper</dd>
+            </article>
+            <article>
+                <h2>Student Supply List</h2>
+                <dl>
+                    <dt>1</dt>
+                    <dd>King James Bible</dd>
+                    <dt>10+</dt>
+                    <dd>#2 Pencils</dd>
+                    <dt>1</dt>
+                    <dd>zippered fabric pencil pouch</dd>
+                    <dt>2</dt>
+                    <dd>eraser sticks</dd>
+                    <dt>2</dt>
+                    <dd>glue sticks</dd>
+                    <dt>1</dt>
+                    <dd>scissors (sharp-pointed)</dd>
+                    <dt>1</dt>
+                    <dd>scissors (dull-pointed)</dd>
+                    <dt>1</dt>
+                    <dd>12" ruler</dd>
+                    <dt>1</dt>
+                    <dd>pencil sharpener with shavings holder</dd>
+                    <dt>2</dt>
+                    <dd>Sewn-bound Composition Notebook (College Ruled)</dd>
+                    <dt>1</dt>
+                    <dd>Reusable Metal or Plastic Water Bottle</dd>
+                    <dd>(Glass is not allowed.)</dd>
+                    <dt>1</dt>
+                    <dd>Lunchbox and Utensils</dd>
+                    <dt>1</dt>
+                    <dd>multi-color pen (black, red, blue, green)</dd>
+                    <dt>1</dt>
+                    <dd>300 white (lined) 3x5 index cards</dd>
+                    <dt>1</dt>
+                    <dd>plastic index card box</dd>
+                    <dt>1</dt>
+                    <dd>sturdy horizontal pocket folder</dd>
+                </dl>
 
-</dl>
-</article>
+                <h2>Classroom Supply List</h2>
+                <dl>
+                    <dt>3</dt>
+                    <dd>tissue boxes</dd>
+                    <dt>3+</dt>
+                    <dd>baby wipes</dd>
+                    <dt>3+</dt>
+                    <dd>pack of wide-ruled loose-leaf paper</dd>
+                    <dt>1</dt>
+                    <dd>ream of white copy paper</dd>
+                </dl>
+            </article>
+        </main>
     </body>
 </html>
