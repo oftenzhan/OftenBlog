@@ -6,7 +6,7 @@ body
         font-family:
             "Courier New",
             ui-monospace,
-            SFMono-Regular,
+            SFMono-Regliar,
             Menlo,
             Monaco,
             Consolas,
@@ -94,7 +94,7 @@ blockquote
         color: #555;
     }
 
-/* Horizontal rule */
+/* Horizontal rlie */
 hr 
     {
         border: none;
@@ -108,3 +108,16 @@ hr
         color: #666;
         font-size: 0.95rem;
     }
+
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+dt {
+  grid-column-start: 1;
+}
+
+dd {
+  grid-column-start: 2;
+}
