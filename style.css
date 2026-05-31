@@ -1,123 +1,199 @@
+/* ==========================================
+FONT: JETBRAINS MONO (SELF-HOSTED)
+========================================== */
 
-body 
-    {
-    
-    /* basic font family */
-        font-family:
-            "Courier New",
-            ui-monospace,
-            SFMono-Regular,
-            Menlo,
-            Monaco,
-            Consolas,
-            "Liberation Mono",
-            monospace;
-
-        /* Wide text is harder to read. */
-        max-width: 760px;
-    
-        /* Centers page horizontally. */
-        margin: 40px auto;
-
-        /* Cleaner mobile.*/
-        padding: 0 20px;
-
-        /* Comfortable line spacing. */
-        line-height: 1.6;
-
-        /* Slightly softer than pure black. */
-        color: #222;
-
-        /* Pure white background. */
-        background: #fff;
-    }
-
-/* Headings */
-
-h1, h2, h3 
-    {
-        line-height: 1.2;
-        margin-top: 2rem;
-    }
-
-h1 
-    {
-        font-size: 2.2rem;
-    }
-
-h2 
-    {
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 0.3rem;
-    }
-
-/* Links */
-
-a 
-    {
-        color: #0645ad;
-    }
-
-a:hover 
-    {
-        text-decoration: none;
-    }
-
-/* Images */
-img {
-        max-width: 100%; 
-        height: auto;
-    
-        /* Slight spacing around images. */
-        margin: 1rem 0;
-    }
-
-/* Code blocks */
-code, pre 
-    {
-        background: #f4f4f4;
-        padding: 2px 4px;
-        font-family: monospace;
-    }
-
-pre 
-    {
-        padding: 1rem;
-        overflow-x: auto;}
-
-/* Blockquotes */
-blockquote 
-    {
-        border-left: 4px solid #ccc;
-        margin-left: 0;
-        padding-left: 1rem;
-        color: #555;
-    }
-
-/* Horizontal rule */
-hr 
-    {
-        border: none;
-        border-top: 1px solid #ddd;
-        margin: 3rem 0;
-    }
-
-/* Small helper class for subtle text */
-.note 
-    {
-        color: #666;
-        font-size: 0.95rem;
-    }
-
-dl {
-  display: grid;
-  grid-template-columns: max-content auto;
+@font-face
+{
+font-family: "JetBrains Mono";
+src: url("./fonts/JetBrainsMono-Regular.woff2") format("woff2");
+font-weight: 400;
+font-style: normal;
+font-display: swap;
 }
 
-dt {
-  grid-column-start: 1;
+@font-face
+{
+font-family: "JetBrains Mono";
+src: url("./fonts/JetBrainsMono-Bold.woff2") format("woff2");
+font-weight: 700;
+font-style: normal;
+font-display: swap;
 }
 
-dd {
-  grid-column-start: 2;
+@font-face
+{
+font-family: "JetBrains Mono";
+src: url("./fonts/JetBrainsMono-Italic.woff2") format("woff2");
+font-weight: 400;
+font-style: italic;
+font-display: swap;
+}
+
+@font-face
+{
+font-family: "JetBrains Mono";
+src: url("./fonts/JetBrainsMono-BoldItalic.woff2") format("woff2");
+font-weight: 700;
+font-style: italic;
+font-display: swap;
+}
+
+/* ==========================================
+PAGE BASE
+========================================== */
+
+body
+{
+font-family:
+"JetBrains Mono",
+ui-monospace,
+SFMono-Regular,
+Menlo,
+Monaco,
+Consolas,
+"Liberation Mono",
+monospace;
+
+/* Enables programming ligatures */
+font-feature-settings: "calt" 1;
+
+/* Layout */
+max-width: 760px;
+margin: 40px auto;
+padding: 0 20px;
+
+/* Typography */
+line-height: 1.4;
+color: #222;
+
+/* Background */
+background: #fff;
+
+}
+
+/* ==========================================
+HEADINGS
+========================================== */
+
+h1,
+h2,
+h3
+{
+line-height: 1.2;
+margin-top: 2rem;
+}
+
+h1
+{
+font-size: 2.2rem;
+}
+
+h2
+{
+border-bottom: 1px solid #ddd;
+padding-bottom: 0.3rem;
+}
+
+/* ==========================================
+LINKS
+========================================== */
+
+a
+{
+color: #0645ad;
+}
+
+a
+{
+text-decoration: none;
+}
+
+/* ==========================================
+IMAGES
+========================================== */
+
+img
+{
+max-width: 100%;
+height: auto;
+margin: 1rem 0;
+}
+
+/* ==========================================
+CODE
+========================================== */
+
+code,
+pre
+{
+background: #f4f4f4;
+padding: 2px 4px;
+
+font-family:
+    "JetBrains Mono",
+    ui-monospace,
+    monospace;
+
+font-feature-settings: "calt" 1;
+
+}
+
+pre
+{
+padding: 1rem;
+overflow-x: auto;
+}
+
+/* ==========================================
+BLOCKQUOTES
+========================================== */
+
+blockquote
+{
+border-left: 4px solid #ccc;
+margin-left: 0;
+padding-left: 1rem;
+color: #555;
+}
+
+/* ==========================================
+HORIZONTAL RULE
+========================================== */
+
+hr
+{
+border: none;
+border-top: 1px solid #ddd;
+margin: 3rem 0;
+}
+
+/* ==========================================
+NOTES
+========================================== */
+
+.note
+{
+color: #666;
+font-size: 0.95rem;
+}
+
+/* ==========================================
+DEFINITION LISTS
+========================================== */
+
+dl
+{
+display: grid;
+grid-template-columns: max-content auto;
+gap: 0.25rem 1rem;
+}
+
+dt
+{
+font-weight: bold;
+}
+
+dd
+{
+margin-left: 0;
 }
