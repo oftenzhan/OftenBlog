@@ -308,7 +308,7 @@ MOBILE
 ========================================== */
 
 @media (max-width: 900px) {
-    .page-layout {
+    .layout--journal {
         display: block;
     }
 
