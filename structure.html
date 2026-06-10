@@ -1,0 +1,92 @@
+Here is a complete, semantic layout for a modern blog article page. It combines all the structural blocks we discussed into a clean, search-engine-friendly template.
+## HTML5 Semantic Layout Template
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Semantic Blog Template</title>
+</head>
+<body>
+
+  <!-- SITE HEADER: Contains branding and main links -->
+  <header>
+    <h1>Tech Insights Blog</h1>
+    <nav aria-label="Main Menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/articles">Articles</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT: The unique core content of this specific page -->
+  <main>
+    
+    <!-- ARTICLE: Self-contained piece of content -->
+    <article>
+      <header>
+        <h2>Understanding Semantic HTML5</h2>
+        <p>Published on: <time datetime="2026-06-06">June 6, 2026</time></p>
+      </header>
+
+      <!-- SECTION 1: Introduction -->
+      <section>
+        <h3>Why Semantics Matter</h3>
+        <p>Semantic tags give meaning to your web structure, making it easier for screen readers and search engines to understand your site.</p>
+        
+        <!-- FIGURE: Bundles an image with its description -->
+        <figure>
+          <img src="html5-structure-map.png" alt="Diagram showing header, main, and footer layout blocks.">
+          <figcaption>Figure 1: Standard layout mapping using HTML5 elements.</figcaption>
+        </figure>
+      </section>
+
+      <!-- SECTION 2: Interactive Element -->
+      <section>
+        <h3>Frequently Asked Questions</h3>
+        
+        <!-- DETAILS & SUMMARY: Native accordion dropdown -->
+        <details>
+          <summary>Is a div tag obsolete?</summary>
+          <p>No. Use divs when you only need a wrapper for styling, positioning, or JavaScript hooks without adding structural meaning.</p>
+        </details>
+      </section>
+    </article>
+
+    <!-- ASIDE: Content indirectly related to the main article (Sidebar) -->
+    <aside aria-label="Sidebar Content">
+      <h3>About the Author</h3>
+      <p>Jane Doe is a frontend developer focused on web accessibility.</p>
+      
+      <h3>Trending Articles</h3>
+      <nav aria-label="Trending Topics">
+        <ul>
+          <li><a href="/css-grids">Mastering CSS Grids</a></li>
+          <li><a href="/flexbox">Flexbox vs Grid</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+  </main>
+
+  <!-- SITE FOOTER: Corporate info and fine print -->
+  <footer>
+    <address>
+      Contact us at <a href="mailto:info@techinsights.com">info@techinsights.com</a>
+    </address>
+    <p>&copy; 2026 Tech Insights. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
+
+## Key Elements of This Structure
+
+* Nested <header>: Notice how both the website itself and the specific <article> have their own <header> tags to hold their respective introductory content.
+* Dual <nav> Elements: The main site menu sits in the top <header>, while a secondary navigation menu for "Trending Articles" sits inside the <aside>. They use distinct aria-label tags to help screen readers distinguish them.
+* Separation of Concerns: The <main> container holds the unique article and sidebar, ensuring search engines can ignore the global site header and footer when indexing the core topic.
+
+Now that the HTML structure is set, I can help you write the CSS to arrange this into a two-column desktop grid (with the sidebar next to the article) that stacks vertically on mobile screens. Would you like to see the CSS code?
+
