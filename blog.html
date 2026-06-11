@@ -11,26 +11,23 @@
     <body>
         <button id="drawer-button">☰ Archive</button>
 
-        <div id="drawer-overlay"></div>
+<div id="drawer-overlay"></div>
+<div class="layout layout--journal">
+<aside id="sidebar">
+    <nav>
+        <h2>Often Thinks</h2>
+        <a href="index.html">[return home]</a>
 
-        <nav id="mobile-sidebar">
-            <h2>Blog Archive</h2>
+        <h3>Blog Archive</h3>
+        <div id="toc"></div>
 
-            <div id="mobile-toc"></div>
-        </nav>
-
-        <div class="layout layout--journal">
-            <aside id="desktop-sidebar">
-                <nav id="toc">
-                    <h2>Often Thinks</h2>
-                    <a href="index.html">[return home]</a>
-                    <h3>Blog Archives</h3>
-                    <div id="desktop-toc"></div>
-                    <p class="note">&copy; 2026 Often Zhan</p>
-                    <p class="note">Made with basic CSS, HTML, a dash of Javascript, and shiritaki noodles.</p>
-                    <p class="note">Last Updated: 2026.06.05</p>
-                </nav>
-            </aside>
+        <p class="note">&copy; 2026 Often Zhan</p>
+        <p class="note">
+            Made with basic CSS, HTML, a dash of Javascript, and shiritaki noodles.
+        </p>
+        <p class="note">Last Updated: 2026.06.05</p>
+    </nav>
+</aside>
 <main>
 <h1>Often's Blog</h1>
 
@@ -2200,79 +2197,78 @@ Attendance was much smaller this year than previous years. The whole pandemic an
 </main></div>
 
 <script>
-    function buildArchive(container) {
-        const archive = {};
+function buildArchive(container) {
+    const archive = {};
 
-        document.querySelectorAll("article[data-date]").forEach((article) => {
-            const year = article.dataset.date.split("-")[0];
+    document.querySelectorAll("article[data-date]").forEach((article) => {
+        const year = article.dataset.date.split("-")[0];
 
-            archive[year] ??= [];
-            archive[year].push(article);
+        archive[year] ??= [];
+        archive[year].push(article);
+    });
+
+    Object.keys(archive)
+        .sort()
+        .reverse()
+        .forEach((year) => {
+            const details = document.createElement("details");
+            details.open = true;
+
+            const summary = document.createElement("summary");
+            summary.textContent = year;
+            details.appendChild(summary);
+
+            const ul = document.createElement("ul");
+
+            archive[year]
+                .sort((a, b) => b.dataset.date.localeCompare(a.dataset.date))
+                .forEach((article) => {
+                    const li = document.createElement("li");
+                    const link = document.createElement("a");
+
+                    const title =
+                        article.querySelector("h2")?.textContent ?? "";
+
+                    const dateEl = document.createElement("div");
+                    dateEl.textContent = article.dataset.date;
+                    dateEl.className = "entry-date";
+
+                    const titleEl = document.createElement("div");
+                    titleEl.textContent = title;
+                    titleEl.className = "entry-title";
+
+                    link.href = "#" + article.id;
+                    link.append(dateEl, titleEl);
+
+                    link.addEventListener("click", closeDrawer);
+
+                    li.appendChild(link);
+                    ul.appendChild(li);
+                });
+
+            details.appendChild(ul);
+            container.appendChild(details);
         });
+}
 
-        Object.keys(archive)
-            .sort()
-            .reverse()
-            .forEach((year) => {
-                const details = document.createElement("details");
-                details.open = true;
+const drawer = document.getElementById("sidebar");
+const overlay = document.getElementById("drawer-overlay");
+const button = document.getElementById("drawer-button");
 
-                const summary = document.createElement("summary");
-                summary.textContent = year;
-                details.appendChild(summary);
+function openDrawer() {
+    drawer.classList.add("open");
+    overlay.classList.add("open");
+}
 
-                const ul = document.createElement("ul");
+function closeDrawer() {
+    drawer.classList.remove("open");
+    overlay.classList.remove("open");
+}
 
-                archive[year]
-                    .sort((a, b) => b.dataset.date.localeCompare(a.dataset.date))
-                    .forEach((article) => {
-                        const li = document.createElement("li");
-                        const link = document.createElement("a");
+buildArchive(document.getElementById("toc"));
 
-                        const title =
-                            article.querySelector("h2")?.textContent ?? "";
-
-                        const dateEl = document.createElement("div");
-                        dateEl.textContent = article.dataset.date;
-                        dateEl.className = "entry-date";
-
-                        const titleEl = document.createElement("div");
-                        titleEl.textContent = title;
-                        titleEl.className = "entry-title";
-
-                        link.href = "#" + article.id;
-                        link.append(dateEl, titleEl);
-
-                        link.addEventListener("click", closeDrawer);
-
-                        li.appendChild(link);
-                        ul.appendChild(li);
-                    });
-
-                details.appendChild(ul);
-                container.appendChild(details);
-            });
-    }
-
-    const drawer = document.getElementById("mobile-sidebar");
-    const overlay = document.getElementById("drawer-overlay");
-    const button = document.getElementById("drawer-button");
-
-    function openDrawer() {
-        drawer.classList.add("open");
-        overlay.classList.add("open");
-    }
-
-    function closeDrawer() {
-        drawer.classList.remove("open");
-        overlay.classList.remove("open");
-    }
-
-    buildArchive(document.getElementById("desktop-toc"));
-    buildArchive(document.getElementById("mobile-toc"));
-
-    button.addEventListener("click", openDrawer);
-    overlay.addEventListener("click", closeDrawer);
+button.addEventListener("click", openDrawer);
+overlay.addEventListener("click", closeDrawer);
 </script>
 <script>
 document.querySelectorAll("article[data-date]").forEach((article) => {
